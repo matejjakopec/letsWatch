@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">LetsWatch</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Log in</string>
+    <string name="register">Sign Up</string>
+    <string name="email">Email</string>
+    <string name="repeatPass">Repeat Password</string>
+    <string name="gotoRegister">Don\'t have an account? Create one now!</string>
+    <string name="gotoLogin">Already have an account? Log in!</string>
+    <string name="title_activity_drawerbar">DrawerbarActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+
+</resources>
