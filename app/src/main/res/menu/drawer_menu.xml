@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/toWatch"
+            android:icon="@drawable/ic_movie"
+            android:title="Movies to watch"
+            ></item>
+        <item
+            android:id="@+id/watchedList"
+            android:icon="@drawable/ic_check"
+            android:title="Watched movies"></item>
+    </group>
+    <item android:title="More">
+        <menu >
+            <item
+                android:id="@+id/settings"
+                android:icon="@drawable/ic_baseline_settings_24"
+                android:title="Settings"></item>
+        </menu>
+    </item>
+
+
+</menu>
