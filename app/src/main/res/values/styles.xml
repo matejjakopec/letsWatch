@@ -10,9 +10,12 @@
         <item name="android:textColorHint">@color/hint</item>
         <item name="android:backgroundTint">@color/red</item>
     </style>
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:forceDarkAllowed">false</item>
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
+
 
 
 </resources>
