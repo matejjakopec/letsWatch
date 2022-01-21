@@ -26,8 +26,8 @@ class HomeScreenActivity : AppCompatActivity() {
         val menuBtn = findViewById<ImageView>(R.id.menuBtn)
         val usernameHeader = findViewById<TextView>(R.id.welcomeUser)
         auth = Firebase.auth
-        usernameHeader.text = "Welcome " + getUsername()
-        menuBtn.setOnClickListener(){
+        usernameHeader.text = getUsername()
+        menuBtn.setOnClickListener() {
             if (drawer.isDrawerOpen(GravityCompat.START)) {
                 drawer.closeDrawer(GravityCompat.START)
             } else {
@@ -44,16 +44,44 @@ class HomeScreenActivity : AppCompatActivity() {
             super.onBackPressed()
         }
     }
-    fun getUsername(): String{
+
+    fun getUsername(): String? {
 
         val db = Firebase.firestore
-        var username = ""
-        db.collection("users").whereEqualTo("uid", auth.currentUser!!.uid).get().addOnSuccessListener { documents ->
-            for (document in documents) {
-                username = document.data["username"].toString()
-            }
-        }.toString()
+        var currentUser: User? = null
+        var users: List<User?> = arrayListOf()
+        currentUser = User("novi","novi","novi")
+//        var query = db.collection("users").document(auth.currentUser?.uid.toString()).get().addOnSuccessListener {
+//            result ->
+//            username = result.get("username").toString()
+//        }
 
-        return username
+
+//        .get().addOnSuccessListener { result ->
+//            users = result.toObjects(User::class.java)
+//            for(user in users){
+//                if(user?.uid.toString().contains(auth.currentUser?.uid.toString())){
+//                    currentUser = user
+//                }
+//            }
+//        }
+
+        db.collection("users")
+            .get()
+            .addOnSuccessListener { result ->
+                users = result.toObjects(User::class.java)
+                var currentUser: User ? = null
+                for(user in users){
+                    Log.d(TAG, "user ${user?.email.toString()}")
+                    if(user?.email.toString().contains(auth.currentUser?.email.toString())){
+                        currentUser =  user
+                        Log.d(TAG, "valja ${currentUser?.email.toString()}")
+                    }
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.w(TAG, "Error getting documents.", exception)
+            }
+        return currentUser?.username.toString()
     }
 }
