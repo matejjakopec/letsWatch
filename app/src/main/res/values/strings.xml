@@ -8,6 +8,12 @@
     <string name="repeatPass">Repeat Password</string>
     <string name="gotoRegister">Don\'t have an account? Create one now!</string>
     <string name="gotoLogin">Already have an account? Log in!</string>
+    <string name="welcomeExplanation">You are not connected to anyone currently. To start using this app you need to connect with another user! To connect generate and send
+    your code to other user or insert their code to start!</string>
+    <string name="generateCode">Generate Code</string>
+    <string name="insertCode">Insert code</string>
+    <string name="yourCodeIs">Your generated code is:</string>
+    <string name="generatedCodeExplanation">This is your unique generated code!\nShare this with the user you want to connect with</string>
     <string name="title_activity_drawerbar">DrawerbarActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
