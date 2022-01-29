@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable name="user" type="com.example.letswatch.User"/>
+        <variable name="connectedUser" type="com.example.letswatch.User"/>
     </data>
 <LinearLayout
     android:layout_width="match_parent"
@@ -35,7 +36,7 @@
         android:layout_height="wrap_content"
         android:paddingLeft="10dp"
         android:paddingTop="5dp"
-        android:text="Connected to: username"
+        android:text='@{"Connected to: " + connectedUser.username}'
         android:theme="@style/text" />
 
 </LinearLayout>

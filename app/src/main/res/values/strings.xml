@@ -24,5 +24,13 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+    <string name="openDrawer">Drawer opened</string>
+    <string name="closeDrawer">Drawer closed</string>
+    <string name="pleaseEnterCode">Please enter the code of the user you want to connect with</string>
+    <string name="connect">Connect</string>
+    <string name="code">Code</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 
 </resources>

@@ -1,6 +1,7 @@
 package com.example.letswatch
 
 import android.app.Activity
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -10,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentTransaction
 import com.example.letswatch.databinding.ActivityHomeScreenBinding
@@ -37,6 +39,7 @@ class NotConnectedFragment : Fragment(R.layout.fragment_not_connected) {
         val view = fragmentNotConnectedBinding.root
         fragmentNotConnectedBinding.lifecycleOwner = this
         generateCodeBtnAction(view)
+        connectCodeBtnAction(view)
         getUser(fragmentNotConnectedBinding)
         // Inflate the layout for this fragment
         return view
@@ -45,6 +48,13 @@ class NotConnectedFragment : Fragment(R.layout.fragment_not_connected) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         generateCodeBtnAction(view)
         super.onViewCreated(view, savedInstanceState)
+    }
+
+    fun connectCodeBtnAction(view: View){
+        val button = view.findViewById<Button>(R.id.ConnectToUserButton)
+        button.setOnClickListener(){
+            (activity as HomeScreenActivity?)!!.replaceFragment(ConnectCodeFragment())
+        }
     }
 
     fun generateCodeBtnAction(view: View){

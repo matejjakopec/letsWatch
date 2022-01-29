@@ -59,7 +59,7 @@ class RegisterActivity : AppCompatActivity() {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG, "createUserWithEmail:success")
                     val user = auth.currentUser
-                    val userInfo = User(user!!.uid,username.text.toString(),user.email)
+                    val userInfo = User(user!!.uid,username.text.toString(),user.email,"")
 
 // Add a new document with a generated ID
                     db.collection("users").document(user!!.uid.toString()).set(userInfo)

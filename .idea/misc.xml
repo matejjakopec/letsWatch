@@ -4,6 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/jakop/AndroidStudioProjects/LetsWatch/app/src/main/res/drawable/buttonShapeRed.xml" value="0.20989583333333334" />
+        <entry key="..\:/Users/jakop/AndroidStudioProjects/LetsWatch/app/src/main/res/drawable/buttonfocusable.xml" value="0.18" />
+        <entry key="..\:/Users/jakop/AndroidStudioProjects/LetsWatch/app/src/main/res/drawable/buttonfocusablered.xml" value="0.18" />
         <entry key="..\:/Users/jakop/AndroidStudioProjects/LetsWatch/app/src/main/res/drawable/buttonshape.xml" value="0.3828125" />
         <entry key="..\:/Users/jakop/AndroidStudioProjects/LetsWatch/app/src/main/res/drawable/buttonshapered.xml" value="0.22291666666666668" />
         <entry key="..\:/Users/jakop/AndroidStudioProjects/LetsWatch/app/src/main/res/drawable/drawbarshape.xml" value="0.3828125" />
@@ -15,8 +17,10 @@
         <entry key="..\:/Users/jakop/AndroidStudioProjects/LetsWatch/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/jakop/AndroidStudioProjects/LetsWatch/app/src/main/res/layout/activity_register.xml" value="0.25" />
         <entry key="..\:/Users/jakop/AndroidStudioProjects/LetsWatch/app/src/main/res/layout/content_drawerbar.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/jakop/AndroidStudioProjects/LetsWatch/app/src/main/res/layout/fragment_connect_code.xml" value="0.17135416666666667" />
         <entry key="..\:/Users/jakop/AndroidStudioProjects/LetsWatch/app/src/main/res/layout/fragment_generate_code.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/jakop/AndroidStudioProjects/LetsWatch/app/src/main/res/layout/fragment_not_connected.xml" value="0.25" />
+        <entry key="..\:/Users/jakop/AndroidStudioProjects/LetsWatch/app/src/main/res/layout/fragment_start.xml" value="0.18854166666666666" />
         <entry key="..\:/Users/jakop/AndroidStudioProjects/LetsWatch/app/src/main/res/layout/nav_header.xml" value="0.2" />
         <entry key="..\:/Users/jakop/AndroidStudioProjects/LetsWatch/app/src/main/res/menu/activity_main_drawer.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/jakop/AndroidStudioProjects/LetsWatch/app/src/main/res/menu/drawer_menu.xml" value="0.25" />
