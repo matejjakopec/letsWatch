@@ -1,21 +1,15 @@
 package com.example.letswatch
 
-import android.app.UiModeManager
 import android.content.Intent
-import android.content.res.Resources
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import androidx.appcompat.app.AppCompatDelegate
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 import android.text.TextUtils
 import android.util.Log
 import android.util.Patterns
-import android.widget.Toast
+import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 
 class MainActivity : AppCompatActivity() {
@@ -24,6 +18,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         auth = Firebase.auth
         super.onCreate(savedInstanceState)
+        checkIfLoggedIn()
         setContentView(R.layout.activity_main)
         supportActionBar?.hide()
         val switchToRegister = findViewById<TextView>(R.id.gotoRegister)
@@ -32,13 +27,10 @@ class MainActivity : AppCompatActivity() {
         switchToRegister.setOnClickListener(){ goToRegister() }
     }
 
-    override fun onStart() {
-        checkIfLoggedIn()
-        super.onStart()
-    }
+
 
     fun checkIfLoggedIn(){
-        var user = auth.currentUser
+        val user = auth.currentUser
         if (user != null) {
             val intent = Intent(this, HomeScreenActivity::class.java)
             startActivity(intent)

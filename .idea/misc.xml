@@ -3,24 +3,49 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/jakop/AndroidStudioProjects/LetsWatch/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3395" />
         <entry key="..\:/Users/jakop/AndroidStudioProjects/LetsWatch/app/src/main/res/drawable/buttonShapeRed.xml" value="0.20989583333333334" />
+        <entry key="..\:/Users/jakop/AndroidStudioProjects/LetsWatch/app/src/main/res/drawable/buttoncirclegreen.xml" value="0.198" />
+        <entry key="..\:/Users/jakop/AndroidStudioProjects/LetsWatch/app/src/main/res/drawable/buttoncirclered.xml" value="0.198" />
         <entry key="..\:/Users/jakop/AndroidStudioProjects/LetsWatch/app/src/main/res/drawable/buttonfocusable.xml" value="0.18" />
         <entry key="..\:/Users/jakop/AndroidStudioProjects/LetsWatch/app/src/main/res/drawable/buttonfocusablered.xml" value="0.18" />
         <entry key="..\:/Users/jakop/AndroidStudioProjects/LetsWatch/app/src/main/res/drawable/buttonshape.xml" value="0.3828125" />
         <entry key="..\:/Users/jakop/AndroidStudioProjects/LetsWatch/app/src/main/res/drawable/buttonshapered.xml" value="0.22291666666666668" />
+        <entry key="..\:/Users/jakop/AndroidStudioProjects/LetsWatch/app/src/main/res/drawable/buttonshapeyellow.xml" value="0.18" />
+        <entry key="..\:/Users/jakop/AndroidStudioProjects/LetsWatch/app/src/main/res/drawable/buttonsqare.xml" value="0.198" />
+        <entry key="..\:/Users/jakop/AndroidStudioProjects/LetsWatch/app/src/main/res/drawable/buttonsquare.xml" value="0.198" />
+        <entry key="..\:/Users/jakop/AndroidStudioProjects/LetsWatch/app/src/main/res/drawable/buttonsquarefocusablered.xml" value="0.198" />
+        <entry key="..\:/Users/jakop/AndroidStudioProjects/LetsWatch/app/src/main/res/drawable/buttonsquarered.xml" value="0.198" />
+        <entry key="..\:/Users/jakop/AndroidStudioProjects/LetsWatch/app/src/main/res/drawable/divider.xml" value="0.22" />
+        <entry key="..\:/Users/jakop/AndroidStudioProjects/LetsWatch/app/src/main/res/drawable/divider_longer.xml" value="0.3675" />
         <entry key="..\:/Users/jakop/AndroidStudioProjects/LetsWatch/app/src/main/res/drawable/drawbarshape.xml" value="0.3828125" />
         <entry key="..\:/Users/jakop/AndroidStudioProjects/LetsWatch/app/src/main/res/drawable/ic_check.xml" value="0.3828125" />
+        <entry key="..\:/Users/jakop/AndroidStudioProjects/LetsWatch/app/src/main/res/drawable/ic_close.xml" value="0.18" />
+        <entry key="..\:/Users/jakop/AndroidStudioProjects/LetsWatch/app/src/main/res/drawable/ic_launcher_background.xml" value="0.3395" />
+        <entry key="..\:/Users/jakop/AndroidStudioProjects/LetsWatch/app/src/main/res/drawable/ic_menu.xml" value="0.196" />
         <entry key="..\:/Users/jakop/AndroidStudioProjects/LetsWatch/app/src/main/res/drawable/ic_menu_gallery.xml" value="0.22135416666666666" />
+        <entry key="..\:/Users/jakop/AndroidStudioProjects/LetsWatch/app/src/main/res/drawable/ic_menu_slideshow.xml" value="0.3395" />
+        <entry key="..\:/Users/jakop/AndroidStudioProjects/LetsWatch/app/src/main/res/drawable/ic_movie.xml" value="0.198" />
+        <entry key="..\:/Users/jakop/AndroidStudioProjects/LetsWatch/app/src/main/res/drawable/linearfadegradient.xml" value="0.3395" />
         <entry key="..\:/Users/jakop/AndroidStudioProjects/LetsWatch/app/src/main/res/drawable/main_header_selector.xml" value="0.3828125" />
         <entry key="..\:/Users/jakop/AndroidStudioProjects/LetsWatch/app/src/main/res/drawable/menuicon.xml" value="0.3828125" />
+        <entry key="..\:/Users/jakop/AndroidStudioProjects/LetsWatch/app/src/main/res/drawable/side_nav_bar.xml" value="0.198" />
         <entry key="..\:/Users/jakop/AndroidStudioProjects/LetsWatch/app/src/main/res/layout/activity_home_screen.xml" value="0.25" />
         <entry key="..\:/Users/jakop/AndroidStudioProjects/LetsWatch/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/jakop/AndroidStudioProjects/LetsWatch/app/src/main/res/layout/activity_register.xml" value="0.25" />
+        <entry key="..\:/Users/jakop/AndroidStudioProjects/LetsWatch/app/src/main/res/layout/activity_swipe_suggestion.xml" value="0.19010416666666666" />
         <entry key="..\:/Users/jakop/AndroidStudioProjects/LetsWatch/app/src/main/res/layout/content_drawerbar.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/jakop/AndroidStudioProjects/LetsWatch/app/src/main/res/layout/fragment_begin_movie_suggestion.xml" value="0.25" />
         <entry key="..\:/Users/jakop/AndroidStudioProjects/LetsWatch/app/src/main/res/layout/fragment_connect_code.xml" value="0.17135416666666667" />
+        <entry key="..\:/Users/jakop/AndroidStudioProjects/LetsWatch/app/src/main/res/layout/fragment_current_suggestion.xml" value="0.25" />
         <entry key="..\:/Users/jakop/AndroidStudioProjects/LetsWatch/app/src/main/res/layout/fragment_generate_code.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/jakop/AndroidStudioProjects/LetsWatch/app/src/main/res/layout/fragment_matches_recycler.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/jakop/AndroidStudioProjects/LetsWatch/app/src/main/res/layout/fragment_not_connected.xml" value="0.25" />
-        <entry key="..\:/Users/jakop/AndroidStudioProjects/LetsWatch/app/src/main/res/layout/fragment_start.xml" value="0.18854166666666666" />
+        <entry key="..\:/Users/jakop/AndroidStudioProjects/LetsWatch/app/src/main/res/layout/fragment_start.xml" value="0.25" />
+        <entry key="..\:/Users/jakop/AndroidStudioProjects/LetsWatch/app/src/main/res/layout/fragment_watched_solo.xml" value="0.1703125" />
+        <entry key="..\:/Users/jakop/AndroidStudioProjects/LetsWatch/app/src/main/res/layout/fragment_watched_together_recycler.xml" value="0.18802083333333333" />
+        <entry key="..\:/Users/jakop/AndroidStudioProjects/LetsWatch/app/src/main/res/layout/movie_row.xml" value="0.33" />
+        <entry key="..\:/Users/jakop/AndroidStudioProjects/LetsWatch/app/src/main/res/layout/movie_row_nobutton.xml" value="0.25" />
         <entry key="..\:/Users/jakop/AndroidStudioProjects/LetsWatch/app/src/main/res/layout/nav_header.xml" value="0.2" />
         <entry key="..\:/Users/jakop/AndroidStudioProjects/LetsWatch/app/src/main/res/menu/activity_main_drawer.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/jakop/AndroidStudioProjects/LetsWatch/app/src/main/res/menu/drawer_menu.xml" value="0.25" />

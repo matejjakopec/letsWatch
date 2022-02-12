@@ -61,7 +61,7 @@ class ConnectCodeFragment : Fragment() {
                     Toast.LENGTH_LONG).show()
                 }else{
                     val connection = Connection(auth.uid, code?.uid, mutableListOf<String>(),
-                        mutableListOf<String>(), mutableListOf<String>(), mutableListOf<String>())
+                        mutableListOf<String>(), mutableListOf<String>(), mutableListOf<String>(),mutableListOf<String>(),mutableListOf<String>())
                     var docId: String?
                     db.collection("connections").add(connection).addOnSuccessListener{ doc ->
                         docId = doc.id

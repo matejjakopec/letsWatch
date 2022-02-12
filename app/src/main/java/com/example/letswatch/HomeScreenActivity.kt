@@ -2,6 +2,8 @@ package com.example.letswatch
 
 
 
+
+import android.content.Intent
 import android.os.Bundle
 import android.text.SpannableString
 import android.text.style.TextAppearanceSpan
@@ -18,6 +20,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
+import com.bumptech.glide.Glide
 import com.example.letswatch.databinding.ActivityHomeScreenBinding
 import com.example.letswatch.databinding.NavHeaderBinding
 import com.google.android.material.navigation.NavigationView
@@ -26,11 +29,12 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
+import com.squareup.picasso.Picasso
 
 
 class HomeScreenActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener  {
     private lateinit var auth: FirebaseAuth
-    private lateinit var navViewHeaderBinding : NavHeaderBinding
+    private var navViewHeaderBinding : NavHeaderBinding? = null
     private var user: User? = null
     private var connectedUser: User? = null
     private lateinit var drawerLayout: DrawerLayout
@@ -42,6 +46,7 @@ class HomeScreenActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
         menuSetUp()
 
     }
+
 
     fun getConnectedUser(){
         val db = Firebase.firestore
@@ -60,7 +65,7 @@ class HomeScreenActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
                     .addOnSuccessListener {
                     result ->
                         connectedUser = result.toObject(User::class.java)
-                        navViewHeaderBinding.connectedUser = connectedUser
+                        navViewHeaderBinding!!.connectedUser = connectedUser
                         Log.w(TAG,"Connected User: ${connectedUser?.username.toString()}")
                 }
             }
@@ -69,13 +74,31 @@ class HomeScreenActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
     fun setUpFragment() {
         if(user?.connectionId?.length!! > 0) {
             replaceFragment(StartFragment())
+            addFragment(BeginMovieSuggestion())
             getConnectedUser()
         }else{
             replaceFragment(NotConnectedFragment())
             connectedUser = User("", "Not Connected To Anyone")
-            navViewHeaderBinding.connectedUser = connectedUser
+            navViewHeaderBinding!!.connectedUser = connectedUser
+            setConnectedListener()
         }
     }
+
+    fun setConnectedListener() {
+        val db = Firebase.firestore
+        db.collection("users").document(user!!.uid.toString()).addSnapshotListener{snapshot,
+            e ->
+            db.collection("users").document(user!!.uid.toString()).get().addOnSuccessListener{
+                result ->
+                var newData: User = result.toObject(User::class.java)!!
+                if(newData.connectionId!!.length > 1){
+                    val intent = Intent(this, HomeScreenActivity::class.java)
+                    startActivity(intent)
+                }
+            }
+        }
+    }
+
 
     private fun setNavigationViewListener() {
         val navigationView = findViewById<View>(R.id.nav_view) as NavigationView
@@ -85,23 +108,34 @@ class HomeScreenActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
 
         val moviesGroup: MenuItem = menu.findItem(R.id.moviesGroup)
         val moreGroup: MenuItem = menu.findItem(R.id.moreGroup)
+        val generalGroup: MenuItem = menu.findItem(R.id.generalGroup)
         val s = SpannableString(moviesGroup.title)
         val s1 = SpannableString(moreGroup.title)
+        val s2 = SpannableString(generalGroup.title)
         s.setSpan(TextAppearanceSpan(this, R.style.text), 0, s.length, 0)
         s1.setSpan(TextAppearanceSpan(this, R.style.text), 0, s1.length, 0)
+        s2.setSpan(TextAppearanceSpan(this, R.style.text), 0, s2.length, 0)
         moviesGroup.title = s
         moreGroup.title = s1
+        generalGroup.title = s2
         navigationView.setNavigationItemSelectedListener(this)
+        navigationView.bringToFront()
     }
 
     override fun onNavigationItemSelected(@NonNull item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         when (item.itemId) {
-            R.id.toWatch -> {
-                Toast.makeText(this, "ToWatch",Toast.LENGTH_SHORT).show()
+            R.id.home -> {
+                replaceFragment(StartFragment())
             }
-            R.id.watchedList -> {
-                Toast.makeText(this, "watchedList",Toast.LENGTH_SHORT).show()
+            R.id.toWatch -> {
+                replaceFragment(MatchesRecyclerFragment())
+            }
+            R.id.watchedTogetherList -> {
+                replaceFragment(WatchedTogetherRecyclerFragment())
+            }
+            R.id.watchedAloneList -> {
+                replaceFragment(WatchedSoloFragment())
             }
             R.id.settings -> {
                 Toast.makeText(this, "settings",Toast.LENGTH_SHORT).show()
@@ -121,6 +155,12 @@ class HomeScreenActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
         transaction.commit()
     }
 
+    fun addFragment(newFragment: Fragment){
+        val transaction: FragmentTransaction = supportFragmentManager?.beginTransaction()
+        transaction.add(R.id.drawer_layout, newFragment)
+        transaction.commit()
+    }
+
 
 
     fun menuSetUp(){
@@ -128,6 +168,8 @@ class HomeScreenActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
         setNavigationViewListener()
         val menuBtn = findViewById<ImageView>(R.id.menuBtn)
         menuBtn.setOnClickListener(){
+            val navigationView = findViewById<View>(R.id.nav_view) as NavigationView
+            navigationView.bringToFront()
             if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
                 drawerLayout.closeDrawer(GravityCompat.START)
             } else {
@@ -150,17 +192,26 @@ class HomeScreenActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
             this, R.layout.activity_home_screen)
         val viewHeader = binding.navView.getHeaderView(0)
         navViewHeaderBinding = NavHeaderBinding.bind(viewHeader)
-        navViewHeaderBinding.lifecycleOwner = this
+        navViewHeaderBinding!!.lifecycleOwner = this
         val db = Firebase.firestore
         var currentUser: User? = null
         db.collection("users").document(auth.currentUser?.uid.toString()).get().addOnSuccessListener {
             result ->
             currentUser = result.toObject(User::class.java)
             Log.w(TAG, "uid: ${auth.currentUser?.uid.toString()}  username: ${currentUser?.username.toString()}")
-            navViewHeaderBinding.user = currentUser
+            navViewHeaderBinding!!.user = currentUser
             user = currentUser
+            Picasso.get()
+                .load("https://avatars.dicebear.com/api/bottts/" + currentUser!!.username!! + ".png?background=%23212121")
+                .into(navViewHeaderBinding!!.avatarIcon)
             setUpFragment()
         }
+    }
+
+
+    override fun onDestroy() {
+        super.onDestroy()
+        navViewHeaderBinding = null
     }
 
 }

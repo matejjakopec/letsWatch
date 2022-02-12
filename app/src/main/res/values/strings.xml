@@ -29,6 +29,21 @@
     <string name="pleaseEnterCode">Please enter the code of the user you want to connect with</string>
     <string name="connect">Connect</string>
     <string name="code">Code</string>
+    <string name="startSwiping">Start discovering</string>
+    <string name="releasedIn">Release date:</string>
+    <string name="genres">Genres:</string>
+    <string name="rating">Rating:</string>
+    <string name="description">Description:</string>
+    <string name="watchedIt">Watched it</string>
+    <string name="watchedItTogether">Watched it together</string>
+    <string name="youBothLiked">You both liked these movies, so go and watch them</string>
+    <string name="youBothWatched">You watched this movies together</string>
+    <string name="youSoloWatch">You watched this movies by yourself</string>
+    <string name="suggestedMovies">Movies suggested:</string>
+    <string name="likedMovies">Movies liked:</string>
+    <string name="bothLikedMovies">Movies liked by both:</string>
+    <string name="watchTogetherInfoText">Why don\'t you watch this together</string>
+    <string name="lastWatchedTogetherMovie">Last movie watched together:</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

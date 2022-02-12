@@ -3,29 +3,253 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <data>
-        <variable name="code" type="com.example.letswatch.Code"/>
+        <variable name="user" type="com.example.letswatch.User"/>
+        <variable name="connectedUser" type="com.example.letswatch.User"/>
+        <variable name="toWatchMovie" type="com.example.letswatch.MovieData"/>
+        <variable name="lastWatchedMovie" type="com.example.letswatch.MovieData"/>
     </data>
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".NotConnectedFragment"
-        android:id="@+id/constraintLayoutNotConnectedFragment">
+        tools:context=".StartFragment"
+        android:id="@+id/startFragmentConstraintLayout">
+
+        <android.widget.Button
+            android:id="@+id/watchedTogetherRandomButton"
+            android:layout_width="180dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="8dp"
+            android:width="200dp"
+            android:background="@drawable/buttonfocusable"
+            android:fontFamily="@font/open_sans_light"
+            android:text="@string/watchedItTogether"
+            android:textColor="@color/whiteText"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/randomSuggestedMovieImage"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/randomMovieTogetherReleaseDate" />
 
         <TextView
             android:id="@+id/welcomeText"
             style="@style/text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="200dp"
-            android:text='WELCOME'
+            android:layout_marginTop="20dp"
+            android:text='@{"Welcome back, " + user.username}'
             android:textAlignment="center"
             android:textSize="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/connectedUserText"
+            style="@style/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text='@{"You are currently connected to: " + connectedUser.username}'
+            android:textAlignment="center"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/welcomeText" />
 
+        <ImageView
+            android:id="@+id/divider1"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginTop="25dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/connectedUserText"
+            app:srcCompat="@drawable/divider_longer" />
 
+        <TextView
+            android:id="@+id/suggestedMoviesText"
+            style="@style/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="28dp"
+            android:text="@string/suggestedMovies"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider1" />
 
+        <TextView
+            android:id="@+id/suggestedMoviesNumber"
+            style="@style/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="28dp"
+            android:text=""
+            app:layout_constraintStart_toEndOf="@+id/suggestedMoviesText"
+            app:layout_constraintTop_toBottomOf="@+id/divider1" />
+
+        <TextView
+            android:id="@+id/likedMoviesText"
+            style="@style/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/likedMovies"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/suggestedMoviesText" />
+
+        <TextView
+            android:id="@+id/likedMoviesNumber"
+            style="@style/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:text=""
+            app:layout_constraintStart_toEndOf="@+id/likedMoviesText"
+            app:layout_constraintTop_toBottomOf="@+id/suggestedMoviesText" />
+
+        <TextView
+            android:id="@+id/likedbyBothText"
+            style="@style/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/bothLikedMovies"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/likedMoviesText" />
+
+        <TextView
+            android:id="@+id/likedbyBothNumber"
+            style="@style/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:text=""
+            app:layout_constraintStart_toEndOf="@+id/likedbyBothText"
+            app:layout_constraintTop_toBottomOf="@+id/likedMoviesText" />
+
+        <ImageView
+            android:id="@+id/divider2"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginTop="25dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/likedbyBothText"
+            app:srcCompat="@drawable/divider_longer" />
+
+        <ImageView
+            android:id="@+id/divider3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/randomSuggestedMovieImage"
+            app:srcCompat="@drawable/divider_longer" />
+
+        <ImageView
+            android:id="@+id/randomSuggestedMovieImage"
+            android:layout_width="168dp"
+            android:layout_height="99dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/watchTogetherInfoText"
+            tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+        <ImageView
+            android:id="@+id/lastWatchedMovieImage"
+            android:layout_width="168dp"
+            android:layout_height="99dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/watchedlastTextInfo"
+            tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+        <TextView
+            android:id="@+id/watchTogetherInfoText"
+            style="@style/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:text='@string/watchTogetherInfoText'
+            android:textAlignment="center"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider2" />
+
+        <TextView
+            android:id="@+id/watchedlastTextInfo"
+            style="@style/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:text='@string/lastWatchedTogetherMovie'
+            android:textAlignment="center"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider3" />
+
+        <TextView
+            android:id="@+id/randomMovieTogetherTitle"
+            style="@style/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text='@{toWatchMovie.title}'
+            android:textAlignment="center"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/randomSuggestedMovieImage"
+            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/watchTogetherInfoText" />
+
+        <TextView
+            android:id="@+id/lastWatchedMovieTitle"
+            style="@style/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+
+            android:textStyle="bold"
+            android:text='@{lastWatchedMovie.title}'
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/lastWatchedMovieImage"
+            app:layout_constraintTop_toBottomOf="@+id/watchedlastTextInfo" />
+
+        <TextView
+            android:id="@+id/randomMovieTogetherReleaseDate"
+            style="@style/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text='@{toWatchMovie.releaseDate}'
+            android:textAlignment="center"
+            app:layout_constraintEnd_toStartOf="@+id/randomSuggestedMovieImage"
+            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/randomMovieTogetherTitle" />
+
+        <TextView
+            android:id="@+id/lastWatchedMovieRelaseDate"
+            style="@style/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text='@{lastWatchedMovie.releaseDate}'
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintStart_toEndOf="@+id/lastWatchedMovieImage"
+            app:layout_constraintTop_toBottomOf="@+id/lastWatchedMovieTitle" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>

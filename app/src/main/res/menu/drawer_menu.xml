@@ -2,6 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
+    <item android:title="General"
+        android:id="@+id/generalGroup">
+        <menu android:checkableBehavior="single">
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/home"
+                    android:icon="@drawable/ic_home"
+                    android:title="Home"></item>
+            </group>
+        </menu>
+    </item>
     <item android:title="Movies"
         android:id="@+id/moviesGroup">
         <menu>
@@ -9,12 +20,16 @@
                 <item
                     android:id="@+id/toWatch"
                     android:icon="@drawable/ic_movie"
-                    android:title="Movies to watch"
+                    android:title="To watch together"
                     ></item>
                 <item
-                    android:id="@+id/watchedList"
+                    android:id="@+id/watchedTogetherList"
+                    android:icon="@drawable/ic_watchtogether_check_24"
+                    android:title="Watched together"></item>
+                <item
+                    android:id="@+id/watchedAloneList"
                     android:icon="@drawable/ic_check"
-                    android:title="Watched movies"></item>
+                    android:title="Watched only by you"></item>
             </group >
         </menu>
     </item>
