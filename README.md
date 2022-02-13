@@ -11,3 +11,5 @@
  - ✔️Connecting users with code
  - ✔️If both connected users choose that they like a movie, that movie is suggested to them to watch
  - ✔️Always dark theme (application style)
+ - ✔️Showing movie suggestion with pictures using API
+ - ✔️Allowing chossing and setting what you have seen
