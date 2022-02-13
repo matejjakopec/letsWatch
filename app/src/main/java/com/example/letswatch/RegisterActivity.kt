@@ -51,27 +51,39 @@ class RegisterActivity : AppCompatActivity() {
             Toast.makeText(this, "Passwords do NOT match", Toast.LENGTH_SHORT).show()
             return
         }
-        var email = emailInput.text.toString()
-        var password = passwordInput.text.toString()
-        auth.createUserWithEmailAndPassword(email, password)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
-                    Log.d(TAG, "createUserWithEmail:success")
-                    val user = auth.currentUser
-                    val userInfo = User(user!!.uid,username.text.toString(),user.email,"","1","0")
+        if(username.text.toString().length < 4){
+            Toast.makeText(this, "Username must be at least 4 characters long", Toast.LENGTH_SHORT).show()
+            return
+        }
+        db.collection("users").whereEqualTo("username", username.text.toString()).get()
+            .addOnSuccessListener { documents ->
+                if(documents.isEmpty){
+                    var email = emailInput.text.toString()
+                    var password = passwordInput.text.toString()
+                    auth.createUserWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(this) { task ->
+                            if (task.isSuccessful) {
+                                // Sign in success, update UI with the signed-in user's information
+                                Log.d(TAG, "createUserWithEmail:success")
+                                val user = auth.currentUser
+                                val userInfo = User(user!!.uid,username.text.toString(),user.email,"","1","0")
 
 // Add a new document with a generated ID
-                    db.collection("users").document(user!!.uid.toString()).set(userInfo)
+                                db.collection("users").document(user!!.uid.toString()).set(userInfo)
 
-                    val intent = Intent(this, HomeScreenActivity::class.java)
-                    startActivity(intent)
-                } else {
-                    // If sign in fails, display a message to the user.
-                    Log.w(TAG, "createUserWithEmail:failure", task.exception)
-                    Toast.makeText(baseContext, "Authentication failed.",
-                        Toast.LENGTH_SHORT).show()
+                                val intent = Intent(this, HomeScreenActivity::class.java)
+                                startActivity(intent)
+                            } else {
+                                // If sign in fails, display a message to the user.
+                                Log.w(TAG, "createUserWithEmail:failure", task.exception)
+                                Toast.makeText(baseContext, "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                }else{
+                    Toast.makeText(this, "This username is taken", Toast.LENGTH_SHORT).show()
                 }
             }
+
     }
 }
